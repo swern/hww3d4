@@ -1,9 +1,6 @@
-require_relative('./models/pets')
-require_relative('./models/pet_shops')
+require_relative('.models/pet_shops')
 require_relative('./models/pets')
 require_relative('sql_runner')
-require('pg')
-
 
 runner = SqlRunner.new({dbname: 'pet_stores', host:'localhost'})
 
@@ -22,5 +19,5 @@ pet1.save()
 pet2.save()
 pet3.save()
 
-binding.pry
-nil
+# binding.pry
+# nil

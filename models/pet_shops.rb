@@ -17,4 +17,12 @@ class PetShop
     @runner.run(sql)
   end
 
+  def albums()
+    #query the database to get its albums' data
+    sql = "SELECT * FROM pets WHERE store_id = #{@id}"
+     #make album objects
+     pets_data = @runner.run(sql)
+     pets_array = pets_data.map {|pet| Album.new(pet, @runner)}
+     return album_array
+  end
 end

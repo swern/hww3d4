@@ -1,4 +1,4 @@
-
+require('pg')
 
 class Pet
   attr_accessor(:name, :type, :id, :store_id)
@@ -15,5 +15,12 @@ class Pet
   def save 
     sql = "INSERT INTO pets (name, type, store_id) VALUES( '#{@name}', '#{@type}', '#{@store_id}')"
     @runner.run(sql)
+  end
+
+  def pet_shop()
+    sql = "SELECT * FROM pet_stores WHERE id = #{store_id}"
+    store_data = @runner.run(sql)
+    pet_array = store_data.map {|store| PetShow.new(store, @runner)}
+    return pet_array.first
   end
 end
